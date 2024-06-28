@@ -1,0 +1,38 @@
+<section>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Mes devis</h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Type maison</th>
+                <th scope="col">Type finition</th>
+                <th scope="col">Lieu</th>
+                <th scope="col">Date debut</th>
+                <th scope="col">Date fin</th>
+                <th scope="col">Prix total</th>
+                <th></th>
+                <!-- <th scope="col">Start Date</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="list : ${lists}">
+                <th scope="row" th:text="${list.maison}">1</th>
+                <td th:text="${list.finition}">Brandon Jacob</td>
+                <td th:text="${list.getLieu()}"> </td>
+                <td th:text="${list.datedebut}">Designer</td>
+                <td th:text="${list.datefin}">Designer</td>
+                <td th:text="${list.getVraiMontantString()}" class="text-end">Designer</td>
+                <td class="text-center col-sm-2"> 
+                    
+                  <!-- <a th:href="@{/client/detail-devis(iddevis=${list.id})}"> <button type="button" class="btn btn-secondary rounded-pill"><i class="bi bi-info-circle"></i>  </button> </a> -->
+                  <a th:href="@{/client/export-pdf(iddevis=${list.id})}"> <button type="button" class="btn btn-danger rounded-pill"><i class="bx bxs-file-pdf"> </i> </button> </a>
+
+                 <a th:href="@{/client/paiement(id=${list.id})}">   <button type="button" class="btn btn-outline-success rounded-pill"><i class="bi bi-currency-dollar"></i></button> </a>
+                </td>
+              </tr>
+       
+            </tbody>
+          </table>
+        </div>
+</section>

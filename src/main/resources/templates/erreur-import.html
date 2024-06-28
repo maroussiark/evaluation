@@ -1,0 +1,23 @@
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"> Erreur des csv : </h5>
+            <table class="table table-danger table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col"> Nom du fichier </th>
+                        <th scope="col"> Erreur </th>
+                        <th scope="col"> Ligne </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="list : ${lists}">
+                        <td th:text="${list.nom_fichier}"></td>
+                        <td th:text="${list.erreur}"></td>
+                        <td th:text="${list.ligne}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

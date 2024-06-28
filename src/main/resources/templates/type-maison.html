@@ -1,0 +1,132 @@
+<section class="bg-light pt-sm-0 py-5">
+  <style>
+    .btn-toggle {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .btn-toggle.active {
+      background-color: #007bff;
+      color: #fff;
+      border-color: #007bff;
+    }
+  </style>
+
+  <div class="card">
+    <div class="container py-5">
+      <h1 class="h2 semi-bold-600 text-center mt-2">Nos types de maison</h1>
+      <form th:action="@{/client/cree-devis}" method="post">
+        <div
+          th:if="${message!=''}"
+          class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show"
+          role="alert"
+        >
+          <span th:text="${message}"> </span>
+          <button
+            type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        <!-- Start Pricing Horizontal -->
+        <div
+          class="pricing-horizontal row col-10 m-auto d-flex shadow-sm rounded overflow-hidden bg-white my-3"
+          th:each="maison : ${maisons}"
+        >
+          <div
+            class="pricing-horizontal-icon col-md-3 text-center bg-secondary text-light py-4"
+          >
+            <i class="display-1 bx bx-building-house pt-4"></i>
+            <h5 class="h5 semi-bold-600 pb-4 light-300" th:text="${maison.nom}">
+              Free
+            </h5>
+          </div>
+          <div
+            class="pricing-horizontal-body offset-lg-1 col-md-5 col-lg-4 d-flex align-items-center pl-5 pt-lg-0 pt-4"
+          >
+            <ul class="text-left px-4 list-unstyled mb-0 light-300">
+              <li th:each="desc : ${maison.descriptionList()}">
+                <i class="bx bxs-circle me-2"></i
+                ><span th:text="${desc}"> </span>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="pricing-horizontal-tag col-md-4 text-center pt-3 d-flex align-items-center"
+          >
+            <div class="w-100 light-300">
+              <div class="form-check" style="border: 1px">
+                <button
+                  type="button"
+                  class="btn-toggle"
+                  th:attr="data-value=${maison.id}"
+                >
+                  Choisir
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="selectedOption" name="maison" required />
+        <!-- End Pricing Horizontal -->
+        <center>
+          <div class="row mb-3 m-auto ml-4 d-flex my-3 mx-4 col-sm-6">
+            <label class="col-form-label"
+              >Selectionner un type de finition</label
+            >
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="finition"
+            >
+              <!-- <option selected>Type de finition</option> -->
+              <option
+                th:value="${finition.id}"
+                th:text="${finition.nom}"
+                th:each="finition : ${finitions}"
+              >
+                One
+              </option>
+            </select>
+          </div>
+          <div class="row mb-3 col-sm-6 mx-4">
+            <label for="inputDate" class="col-form-label"
+              >Date debut de travaux</label
+            >
+            <input type="date" class="form-control" name="date" />
+          </div>
+          <div class="row mb-3 col-sm-6 mx-4">
+            <label for="inputDate" class="col-form-label">Lieu</label>
+            <input type="text" class="form-control" name="lieu" required />
+          </div>
+        </center>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/assets/js/jquery-3.7.1.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $(".btn-toggle").click(function () {
+        $(".btn-toggle").removeClass("active");
+
+        $(this).addClass("active");
+
+        var selectedValue = $(this).data("value");
+        console.log(selectedValue);
+        $("#selectedOption").val(selectedValue);
+      });
+    });
+  </script>
+</section>
+<!--End Pricing Horizontal Section-->

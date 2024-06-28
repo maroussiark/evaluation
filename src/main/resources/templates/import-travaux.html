@@ -1,0 +1,26 @@
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Importer les donnees</h5>
+
+          <!-- General Form Elements -->
+          <form id="uploadForm" method="post" enctype="multipart/form-data" th:action="@{/admin/save-travaux}"  >
+            <div class="row mb-3">
+              <label for="formFile" class="col-sm-2 col-form-label">Maison et travaux</label>
+              <div class="col-sm-6">
+                <input class="form-control" type="file" id="formFile" name="travaux">
+              </div>
+            </div>
+            <div class="row mb-3">
+                <label for="formFile" class="col-sm-2 col-form-label">Devis</label>
+                <div class="col-sm-6">
+                  <input class="form-control" type="file" id="formFile" name="devis">
+                </div>
+              </div>
+            <div class="text-center my-4">
+                <button type="submit" class="btn btn-primary">Importer</button>
+              </div>
+          </form>
+          
+    </div>
+</section>

@@ -1,0 +1,9 @@
+body {
+    background-color: rgb(131, 177, 236);
+    background-repeat: no-repeat; 
+}
+.img-fluid-v1 {
+    width: 100%;
+    height: 95%;
+    border-radius: 1rem 0 0 1rem;
+}

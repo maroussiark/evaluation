@@ -1,0 +1,99 @@
+<section class="section admin">
+  <div class="row">
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card revenue-card">
+        <div class="card-body">
+          <h5 class="card-title">Montant total <span>| Devis</span></h5>
+
+          <div class="d-flex align-items-center">
+            <div
+              class="card-icon d-flex align-items-center justify-content-center"
+            >
+              <button class="btn btn-lg rounded-circle btn-outline-success">
+                <i class="bi bi-currency-dollar"></i>
+              </button>
+            </div>
+            <div class="ps-3">
+              <h6>AR <span th:text="${totalMontant}"></span></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card revenue-card">
+        <div class="card-body">
+          <h5 class="card-title">Paiement total <span>| Devis</span></h5>
+
+          <div class="d-flex align-items-center">
+            <div
+              class="card-icon d-flex align-items-center justify-content-center"
+            >
+              <button class="btn btn-lg rounded-circle btn-outline-success">
+                <i class="bi bi-currency-dollar"></i>
+              </button>
+            </div>
+            <div class="ps-3">
+              <h6>AR <span th:text="${totalPaiement}"></span></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> Montant devis par mois  </h5>
+          <form th:action="@{/admin/dashboard}" class="my-2" method="get">
+          <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Annee</label>
+            <div class="col-sm-2">
+              <input type="number" th:value="${annee}" class="form-control" id="inputText" name="annee">
+            </div>
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-primary"> Selectionner </button>
+            </div>
+          </div>
+          
+          
+          </form>
+        </div>
+          <canvas id="barChart" style="max-height: 400px"></canvas>
+        </div>
+      </div>
+  </div>  
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    console.log("eh");
+
+    document.addEventListener("DOMContentLoaded", () => {
+      new Chart(document.querySelector("#barChart"), {
+        type: "bar",
+        data: {
+          labels: /*[[${labels}]]*/ [],
+          datasets: [
+            {
+              label: "Devis par mois",
+              data: /*[[${data}]]*/ [],
+              backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+              borderColor: ["rgb(255, 99, 132)"],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    });
+    /*]]>*/
+  </script>
+</section>

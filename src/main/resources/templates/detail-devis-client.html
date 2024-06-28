@@ -1,0 +1,72 @@
+<section>
+    <div class="card">
+        <div class="card-body"  >
+            <span class="float-end my-3">
+                <!-- <a th:href="@{/client/export-pdf(iddevis=${lists[0].iddevis})}"> -->
+                   <button class="btn btn-secondary" id="exportBtn" type="button" onclick="generatePDF()"> <i class="bx bxs-file-pdf"> </i> Export </button>
+                <!-- </a> -->
+            </span>
+            <div id="table" class="container m-auto">
+          <h5 class="card-title">Detail des travaux</h5>
+          <p> REF : <span th:text="${lists[0].iddevis}"> </span> </p>
+           <p> CLIENT : <span th:text="${lists[0].client}">  </span> </p>
+           <p> LIEU : <span th:text="${lieu}">  </span> </p>
+          <table class="table table-bordered">
+            <thead>
+              <tr class="text-center">
+                <th scope="col"> Travaux </th>
+                <th scope="col"> Unite </th>
+                <th scope="col"> Quantite</th>
+                <th scope="col"> Prix Unitaire</th>
+                <th scope="col"> Montant</th>
+                <!-- <th scope="col">Start Date</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="list : ${lists}">
+                <td th:text="${list.travaux}">Brandon Jacob</td>
+                <td th:text="${list.unite}">1</td>
+                <td th:text="${list.quantite}" class="text-end">Designer</td>
+                <td th:text="${list.getPuString()}" class="text-end">Designer</td>
+                <td th:text="${list.getMontantString()}" class="text-end">Designer</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th> Travaux : </th>
+                <td th:text="${totatlTravaux}" class="text-end"> </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th> Taux Finition : </th>
+                <td th:text="${lists[0].getTaux()}" class="text-end"> </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th> Prix Total : </th>
+                <td th:text="${somme}" class="text-end"> </td>
+              </tr>
+       
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <script>
+            function generatePDF() {
+                var element = document.getElementById('table');
+                var opt = {
+                  margin: 0.5,
+                  filename: 'detail-devis.pdf',
+                  image: {type: 'jpeg',quality:0.98},
+                  html2canvas : {scale:2},
+                  jsPDF: {unit : 'in', format:'letter',orientation:'portrait'}
+                }
+                html2pdf().set(opt).from(element).save();
+              }
+        </script>
+</section>

@@ -1,0 +1,93 @@
+<section>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Modification </h5>
+            <form method="post" th:action="@{/client/payer}" class="col-sm-6" id="formulaire">
+                <div th:if="${message!=''}" th:classappend="${type}" class="alert text-light border-0 alert-dismissible fade show" role="alert">
+                    <span th:text="${message}" id="erreur"> </span>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert" style="display: none;" id="erreur">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert" style="display: none;" id="success">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+        
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Montant</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="inputText" name="montant">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" id="inputText" name="date">
+                    </div>
+                </div>
+                <input type="hidden" name="devis" th:value="${id}">
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success">Payer</button>
+                    <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                  </div>
+            </form>
+            <!-- <h4 class="card-title"> Liste des paiment déja effectuer </h4>
+            <p class="text-end" > Reste a payer : <span th:text="${reste}"> </span>  </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Date</th>
+                        <th scope="col">Montant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="list : ${lists}">
+                        <td class="text-center" th:text="${list.date}"></td>
+                        <td class="text-end" th:text="${list.getMontantString()}"> </td>
+                    </tr>
+                    <tr>
+                        <th scope="col" class="text-center"> TOTAL </th>
+                        <td th:text="${total}" class="text-end"> </td>
+                    </tr>
+                </tbody>
+            </table> -->
+        </div>
+    </div>
+  <script src="/assets/js/jquery-3.7.1.min.js"></script>
+
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            $('#formulaire').submit(function(event) {
+                event.preventDefault();
+                
+                var formData = $(this).serialize();
+                    console.log(formData);
+                $.ajax({
+                    type: 'POST',
+                    url: '/client/payer',
+                    data: formData,
+                    success: function(response) {
+                            // Validation réussie, rediriger ou faire d'autres actions
+                            alert('Paiement effectuer');
+                            console.log(response);
+                            $('#erreur').removeClass('alert-danger').addClass('alert-success').text('Paiement reussi').show();
+                            $('#erreur').removeClass('bg-danger').addClass('bg-success');
+                            var id = /*[[${id}]]*/'';
+                            console.log('/client/paiement?id='+id);
+                          //  $('#success').text('Paiement reuissi').show();
+                           // window.location.href = '/client/paiement?id='+formData.devis;
+                    
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr);
+                        console.log('error '+xhr.responseText);
+                        $('#erreur').removeClass('alert-success').addClass('alert-danger').text(xhr.responseText).show();
+                        $('#erreur').removeClass('bg-success').addClass('bg-danger');
+
+                    }
+                });
+            });
+        });
+    </script>
+</section>

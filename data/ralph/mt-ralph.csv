@@ -1,0 +1,10 @@
+type_maison,description,surface,code_travaux,type_travaux,unité,prix_unitaire,quantite,duree_travaux
+TOKYO,"2 chambres, 1 living, 1 salle de bain","128,4",102,beton armée dosée à 350kg/m3,m3,"573215,8","12,3",28
+TOKYO,"2 chambres, 1 living, 1 salle de bain","128,4",103,Armature pour Béton,kg,"865,78","34,5",28
+TOKYO,"2 chambres, 1 living, 1 salle de bain","128,4",104,Remblai d'ouvrage,m3,"37562,26","65,3",28
+TOKYO,"2 chambres, 1 living, 1 salle de bain","128,4",106,Herissonage ep=10,fft,"73245,4","45,8",28
+VILLA BASSE,Une belle villa basse avec piscine,"64,56",102,beton armée dosée à 350kg/m3,m3,"573215,8","67,8",30
+VILLA BASSE,Une belle villa basse avec piscine,"64,56",103,Armature pour Béton,kg,"865,78","34,5",30
+VILLA BASSE,Une belle villa basse avec piscine,"64,56",001,Mur de soutiennement et cloture,m2,"45099,34","12,34",30
+VILLA BASSE,Une belle villa basse avec piscine,"64,56",206,Chape de 2cm,m3,"1235,67","10,65",30
+VILLA BASSE,Une belle villa basse avec piscine,"64,56",201,Maconnerie de moellons,m3,"172114,4","9,62",30

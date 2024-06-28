@@ -1,0 +1,36 @@
+<section>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Liste des devis</h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col"> # </th>
+                <th scope="col"> Client </th>
+                <th scope="col">Type maison</th>
+                <th scope="col">Type finition</th>
+                <th scope="col">Pourcentage (%)</th>
+                <th scope="col">Montant total</th>
+                <th scope="col">Paiement</th>
+                <th></th>
+                <!-- <th scope="col">Start Date</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="list : ${lists}" th:classappend="${list.getCouleur()}">
+                <td th:text="${list.id}">Brandon Jacob</td>
+                <th th:text="${list.idclient}">1</th>
+                <td th:text="${list.maison}">1</td>
+                <td th:text="${list.finition}">Brandon Jacob</td>
+                <td th:text="${list.getPourcentage()}"> Brandon Jacob </td>
+                <td th:text="${list.getVraiMontantString()}" class="text-end">Designer</td>
+                <td th:text="${list.getPayeString()}" class="text-end">Designer</td>
+                <td class="text-center"> 
+                  <a th:href="@{/admin/detail-devis(iddevis=${list.id})}"> <button type="button" class="btn btn-secondary rounded-pill"><i class="bi bi-info-circle"></i>  </button> </a>
+                </td>
+              </tr>
+       
+            </tbody>
+          </table>
+        </div>
+</section>

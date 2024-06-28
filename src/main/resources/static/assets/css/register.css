@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../img/background_3.jpg') center/cover no-repeat; /* Image d'arrière-plan */
+    height: 100hv;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Div pour l'effet de flou */
+.flou {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    backdrop-filter: blur(10px); /* Effet de flou */
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.8)); /* Dégradé transparent */
+}
+
+/* Contenu centré */
+.contenu {
+    text-align: center;
+    color: #fff;
+    z-index: 1; /* Pour placer le contenu au-dessus de l'effet de flou */
+}

@@ -1,0 +1,32 @@
+<section>
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Types de travaux</h5>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Unite</th>
+                <th scope="col">Prix Unitaire</th>
+                <th></th>
+                <!-- <th scope="col">Start Date</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="list : ${lists}">
+                <th scope="row" th:text="${list.id}">1</th>
+                <td th:text="${list.nom}">Brandon Jacob</td>
+                <td th:text="${list.unite}">Designer</td>
+                <td th:text="${list.getPuString()}" class="text-end">Designer</td>
+                <td class="text-center col-sm-2"> 
+                    
+                  <a th:href="@{/admin/update-form-travaux(id=${list.id})}"> <button type="button" class="btn btn-warning"><i class="bx bx-edit"></i> Modifier </button> </a>
+
+                </td>
+              </tr>
+       
+            </tbody>
+          </table>
+        </div>
+</section>
